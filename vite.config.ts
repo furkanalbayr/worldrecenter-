@@ -10,6 +10,8 @@ export default defineConfig({
     port: 3000
   },
   define: {
-    'process.env': {}
+    'process.env': {
+      API_KEY: JSON.stringify(process.env.API_KEY)
+    }
   }
 });

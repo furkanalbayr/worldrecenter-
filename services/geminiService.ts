@@ -5,15 +5,7 @@ import { GoogleGenAI } from "@google/genai";
  * Follows strict Google GenAI SDK guidelines for initialization and content generation.
  */
 export const getMobilityInsights = async (region: string) => {
-  // Use a fallback to prevent "undefined" error during instantiation if key is missing
-  const apiKey = (typeof process !== 'undefined' && process.env?.API_KEY) || "";
-  
-  if (!apiKey) {
-    console.warn("Gemini API key is missing. live insights are disabled.");
-    return "Insights currently unavailable.";
-  }
-
-  const ai = new GoogleGenAI({ apiKey });
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
   try {
     const response = await ai.models.generateContent({
