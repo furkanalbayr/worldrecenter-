@@ -1,4 +1,3 @@
-
 import { SiteTheme, NavLink, SiteContent } from './types';
 
 export const THEME_CONFIGS = {
@@ -8,6 +7,38 @@ export const THEME_CONFIGS = {
     accent: 'text-stone-500',
     button: 'bg-stone-900 hover:bg-stone-800',
     bg: 'bg-stone-50',
+    font: 'font-main' 
+  },
+  [SiteTheme.CORPORATE]: {
+    name: 'Corporate Blue',
+    primary: 'bg-blue-900',
+    accent: 'text-blue-500',
+    button: 'bg-blue-900 hover:bg-blue-800',
+    bg: 'bg-slate-50',
+    font: 'font-main' 
+  },
+  [SiteTheme.INDUSTRIAL]: {
+    name: 'Industrial Amber',
+    primary: 'bg-amber-900',
+    accent: 'text-amber-500',
+    button: 'bg-amber-900 hover:bg-amber-800',
+    bg: 'bg-stone-100',
+    font: 'font-main' 
+  },
+  [SiteTheme.GLOBAL]: {
+    name: 'Global Green',
+    primary: 'bg-emerald-900',
+    accent: 'text-emerald-500',
+    button: 'bg-emerald-900 hover:bg-emerald-800',
+    bg: 'bg-zinc-50',
+    font: 'font-main' 
+  },
+  [SiteTheme.DYNAMIC]: {
+    name: 'Dynamic Slate',
+    primary: 'bg-slate-900',
+    accent: 'text-slate-500',
+    button: 'bg-slate-900 hover:bg-slate-800',
+    bg: 'bg-slate-50',
     font: 'font-main' 
   }
 };
