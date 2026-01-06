@@ -5,7 +5,8 @@ import { GoogleGenAI } from "@google/genai";
  * Follows strict Google GenAI SDK guidelines for initialization and content generation.
  */
 export const getMobilityInsights = async (region: string) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  // process.env.API_KEY is injected by Vite during build
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
   
   try {
     const response = await ai.models.generateContent({
