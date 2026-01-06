@@ -5,8 +5,15 @@ import { GoogleGenAI } from "@google/genai";
  * Follows strict Google GenAI SDK guidelines for initialization and content generation.
  */
 export const getMobilityInsights = async (region: string) => {
-  // Always initialize GoogleGenAI using the process.env.API_KEY directly within the scope
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
+  // Use a fallback to prevent "undefined" error during instantiation if key is missing
+  const apiKey = (typeof process !== 'undefined' && process.env?.API_KEY) || "";
+  
+  if (!apiKey) {
+    console.warn("Gemini API key is missing. live insights are disabled.");
+    return "Insights currently unavailable.";
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
   
   try {
     const response = await ai.models.generateContent({
@@ -17,8 +24,7 @@ export const getMobilityInsights = async (region: string) => {
       },
     });
 
-    // Access the generated text using the .text property directly
-    return response.text;
+    return response.text || "No insights found.";
   } catch (error) {
     console.error("Gemini Error:", error);
     return "Unable to fetch live insights. Please try again later.";
